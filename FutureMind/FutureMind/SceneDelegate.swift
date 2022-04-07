@@ -9,6 +9,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    let appDependencyContainer = AppDependencyContainer()
     var window: UIWindow?
 
     func scene(
@@ -18,9 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        let viewController = appDependencyContainer.makeViewController()
 
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ViewController()
+        window.rootViewController = viewController
         self.window = window
         window.makeKeyAndVisible()
     }
