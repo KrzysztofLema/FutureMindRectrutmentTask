@@ -18,8 +18,13 @@ class ListViewDataSourceImpl: ListViewDataSource {
     var listViewDiffableDataSource: UITableViewDiffableDataSource<ListViewSection, FutureMind>?
 
     func setupDataSource(tableView: UITableView) {
-        listViewDiffableDataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, futureMind in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.reuseIdentifier, for: indexPath) as? ListTableViewCell else {
+        listViewDiffableDataSource = UITableViewDiffableDataSource(
+            tableView: tableView,
+            cellProvider: { tableView, indexPath, futureMind in
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ListTableViewCell.reuseIdentifier,
+                for: indexPath
+            ) as? ListTableViewCell else {
                 return UITableViewCell()
             }
             cell.setupCell(with: futureMind)
@@ -47,4 +52,3 @@ class ListViewDataSourceImpl: ListViewDataSource {
 enum ListViewSection: CaseIterable {
         case mainSection
 }
-
