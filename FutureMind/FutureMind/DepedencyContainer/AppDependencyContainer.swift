@@ -6,5 +6,7 @@
 //
 
 class AppDependencyContainer {
-
+    func makeListViewDataSource() -> ListViewDataSource {
+        ListViewDataSourceImpl()
+    }
 }

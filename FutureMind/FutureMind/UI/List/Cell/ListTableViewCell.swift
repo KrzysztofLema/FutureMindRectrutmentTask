@@ -13,6 +13,12 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var modificationDateLabel: UILabel!
+
+    func setupCell(with futureMind: FutureMind) {
+        descriptionLabel.text = futureMind.description
+        titleLabel.text = futureMind.title
+        modificationDateLabel.text = futureMind.modificationDate
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -30,28 +30,28 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="6E8-fW-Rl4"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lay-xj-azU">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lay-xj-azU">
                         <rect key="frame" x="183" y="33" width="223" height="113"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="223" id="AxC-62-tu8"/>
                             <constraint firstAttribute="height" priority="999" constant="113" id="yWH-hj-cmF"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-6u-Y1w">
-                        <rect key="frame" x="364" y="150" width="41.333333333333314" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8R-6u-Y1w">
+                        <rect key="frame" x="376.66666666666669" y="150" width="28.666666666666686" height="20"/>
                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="8Dk-rj-F5U"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

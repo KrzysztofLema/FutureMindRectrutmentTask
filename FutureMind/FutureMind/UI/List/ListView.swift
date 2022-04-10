@@ -24,7 +24,7 @@ class ListView: UIView {
 
     private func setupView() {
         addSubview(tableView)
-        tableView.dataSource = self
+        tableView.dataSource = viewModel.listViewDataSource.listViewDiffableDataSource
         tableView.delegate = self
     }
 
@@ -37,24 +37,12 @@ class ListView: UIView {
         self.viewModel = viewModel
         super.init(frame: frame)
         setupView()
+        viewModel.listViewDataSource.setupDataSource(tableView: tableView)
+        viewModel.listViewDataSource.applyFutureMinds()
     }
 
     required init?(coder: NSCoder) {
         fatalError("View is created without Nib files")
-    }
-}
-extension ListView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: ListTableViewCell.reuseIdentifier,
-            for: indexPath
-        ) as? ListTableViewCell
-
-        return cell!
     }
 }
 

@@ -15,6 +15,8 @@
 		951343FB27FF60BB00DC6D90 /* FutureMindTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951343FA27FF60BB00DC6D90 /* FutureMindTests.swift */; };
 		9513440527FF60BB00DC6D90 /* FutureMindUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440427FF60BB00DC6D90 /* FutureMindUITests.swift */; };
 		9513440727FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */; };
+		959C826B280225FF001B81FD /* FutureMind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C826A280225FF001B81FD /* FutureMind.swift */; };
+		959C827028022F8D001B81FD /* ListViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C826F28022F8D001B81FD /* ListViewDataSource.swift */; };
 		95BCF4F227FF7EAA00D3B310 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BCF4F127FF7EAA00D3B310 /* AppDependencyContainer.swift */; };
 		95BCF4F527FF7F8900D3B310 /* AppDependencyContainer+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BCF4F427FF7F8900D3B310 /* AppDependencyContainer+List.swift */; };
 		95BCF4FB27FF84D100D3B310 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BCF4FA27FF84D100D3B310 /* ListViewModel.swift */; };
@@ -53,6 +55,8 @@
 		9513440027FF60BB00DC6D90 /* FutureMindUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutureMindUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9513440427FF60BB00DC6D90 /* FutureMindUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindUITests.swift; sourceTree = "<group>"; };
 		9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		959C826A280225FF001B81FD /* FutureMind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMind.swift; sourceTree = "<group>"; };
+		959C826F28022F8D001B81FD /* ListViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDataSource.swift; sourceTree = "<group>"; };
 		95BCF4F127FF7EAA00D3B310 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		95BCF4F427FF7F8900D3B310 /* AppDependencyContainer+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDependencyContainer+List.swift"; sourceTree = "<group>"; };
 		95BCF4FA27FF84D100D3B310 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -109,14 +113,15 @@
 		951343E227FF60AC00DC6D90 /* FutureMind */ = {
 			isa = PBXGroup;
 			children = (
-				951343F127FF60BB00DC6D90 /* Info.plist */,
 				951343E327FF60AC00DC6D90 /* AppDelegate.swift */,
-				951343E527FF60AC00DC6D90 /* SceneDelegate.swift */,
-				951343EE27FF60BB00DC6D90 /* LaunchScreen.storyboard */,
 				951343EC27FF60BB00DC6D90 /* Assets.xcassets */,
+				959C82712802BABB001B81FD /* DataLayer */,
 				95BCF4F027FF7E0500D3B310 /* DepedencyContainer */,
+				951343F127FF60BB00DC6D90 /* Info.plist */,
+				951343EE27FF60BB00DC6D90 /* LaunchScreen.storyboard */,
+				951343E527FF60AC00DC6D90 /* SceneDelegate.swift */,
 				95BCF4F727FF845C00D3B310 /* UI */,
-				95BCF4F627FF844F00D3B310 /* ViewModels */,
+				95BCF4F627FF844F00D3B310 /* ViewModel */,
 			);
 			path = FutureMind;
 			sourceTree = "<group>";
@@ -138,6 +143,40 @@
 			path = FutureMindUITests;
 			sourceTree = "<group>";
 		};
+		959C826C2802260E001B81FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				959C826A280225FF001B81FD /* FutureMind.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		959C826D28022F6C001B81FD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				95E957B62801F6D300A12217 /* ListTableViewCell.swift */,
+				95E957B82801FDCC00A12217 /* ListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		959C826E28022F79001B81FD /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				959C826F28022F8D001B81FD /* ListViewDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		959C82712802BABB001B81FD /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				959C826C2802260E001B81FD /* Model */,
+				959C826E28022F79001B81FD /* DataSource */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
 		95BCF4F027FF7E0500D3B310 /* DepedencyContainer */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,12 +194,12 @@
 			path = ViewsDepedencyContainer;
 			sourceTree = "<group>";
 		};
-		95BCF4F627FF844F00D3B310 /* ViewModels */ = {
+		95BCF4F627FF844F00D3B310 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				95BCF4F927FF84BC00D3B310 /* ListViewModel */,
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		95BCF4F727FF845C00D3B310 /* UI */ = {
@@ -174,10 +213,9 @@
 		95BCF4F827FF848C00D3B310 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				959C826D28022F6C001B81FD /* Cell */,
 				951343E727FF60AC00DC6D90 /* ListViewController.swift */,
 				95BCF4FC27FF84E200D3B310 /* ListView.swift */,
-				95E957B62801F6D300A12217 /* ListTableViewCell.swift */,
-				95E957B82801FDCC00A12217 /* ListTableViewCell.xib */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -344,11 +382,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				951343E827FF60AC00DC6D90 /* ListViewController.swift in Sources */,
+				959C827028022F8D001B81FD /* ListViewDataSource.swift in Sources */,
 				95E957B72801F6D300A12217 /* ListTableViewCell.swift in Sources */,
 				95BCF4FB27FF84D100D3B310 /* ListViewModel.swift in Sources */,
 				951343E427FF60AC00DC6D90 /* AppDelegate.swift in Sources */,
 				95BCF4F527FF7F8900D3B310 /* AppDependencyContainer+List.swift in Sources */,
 				951343E627FF60AC00DC6D90 /* SceneDelegate.swift in Sources */,
+				959C826B280225FF001B81FD /* FutureMind.swift in Sources */,
 				95BCF4FD27FF84E200D3B310 /* ListView.swift in Sources */,
 				95BCF4F227FF7EAA00D3B310 /* AppDependencyContainer.swift in Sources */,
 			);
