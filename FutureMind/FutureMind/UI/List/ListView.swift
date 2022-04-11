@@ -32,21 +32,15 @@ class ListView: UIView {
 
         tableView.dataSource = viewModel.listViewDataSource.listViewDiffableDataSource
         viewModel.listViewDataSource.setupDataSource(tableView: tableView)
-        tableView.delegate = self
-
+        
         tableView.refreshControl?.addTarget(viewModel, action: #selector(viewModel.pullToRefresh), for: .valueChanged)
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        tableView.frame = safeAreaLayoutGuide.layoutFrame
     }
 
     init(frame: CGRect = .zero, viewModel: ListViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
         setupView()
-
+        setupConstrains()
         bind()
     }
 
@@ -65,15 +59,14 @@ class ListView: UIView {
         }).store(in: &cancallables)
     }
 
-   
-}
+    func setupConstrains() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
 
-extension ListView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }

@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import SafariServices
 
 class ListViewController: UIViewController {
 
     let viewModel: ListViewModel
 
+    var listView: ListView {
+        return view as? ListView ?? ListView(viewModel: viewModel)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        listView.tableView.delegate = self
     }
 
     override func loadView() {
@@ -26,10 +31,27 @@ class ListViewController: UIViewController {
         viewModel: ListViewModel
     ) {
         self.viewModel = viewModel
+
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let url = viewModel.futureMindRemoteApi.list.value[indexPath.row].futureMindDetailURL else {
+            return
+        }
+        let safariViewController = SFSafariViewController(url:url)
+        navigationController?.present(safariViewController, animated: true)
+    }
+
 }
