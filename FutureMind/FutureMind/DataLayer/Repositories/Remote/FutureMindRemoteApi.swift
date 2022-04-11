@@ -9,25 +9,27 @@ import Foundation
 import Combine
 
 protocol FutureMindRemoteApi {
-    var list: AnyPublisher<[FutureMind], RemoteApiError>? { get }
-    func loadList() -> AnyPublisher<[FutureMind], RemoteApiError>
+    var list: CurrentValueSubject<[FutureMind], RemoteApiError> { get }
+    func loadList()
+
 }
 
 class FutureMindRemoteApiImpl: FutureMindRemoteApi {
 
-    var list: AnyPublisher<[FutureMind], RemoteApiError>?
+    var list: CurrentValueSubject<[FutureMind], RemoteApiError> = CurrentValueSubject([])
 
     private let endpoint = URL(string: "https://recruitment-task.futuremind.dev/recruitment-task")
-    private var urlSession = URLSession.shared
     private let decoder = JSONDecoder()
+    private var cancellables = Set<AnyCancellable>()
 
     init() {
-        list = loadList()
+        loadList()
     }
 
-    func loadList() -> AnyPublisher<[FutureMind], RemoteApiError> {
+    func loadList() {
         debugInfo("Load List ")
-        return urlSession.dataTaskPublisher(for: endpoint!)
+       URLSession.shared.dataTaskPublisher(for: endpoint!)
+            .retry(3)
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
                     debugError("Bad http response \(response)")
@@ -37,23 +39,26 @@ class FutureMindRemoteApiImpl: FutureMindRemoteApi {
                 return data
             }
             .decode(type: [FutureMindResponse].self, decoder: decoder)
-            .mapError { error -> RemoteApiError in
-                if let error = error as? RemoteApiError {
-                    return error
-                } else {
-                    return RemoteApiError.decoding
-                }
+            .mapError { error -> Never in
+                fatalError()
+//                if let error = error as? RemoteApiError {
+//                    return error
+//                } else {
+//                    return RemoteApiError.decoding
+//                }
             }
-            .flatMap({ futureMindsResponse -> AnyPublisher<[FutureMind], RemoteApiError> in
+            .flatMap({ futureMindsResponse -> AnyPublisher<[FutureMind], Never> in
                 return futureMindsResponse.publisher.map { futureMindResponse -> FutureMind in
                     debugInfo("Mapping futureMindResponser to future mind")
                     return FutureMind(futureMindResponse: futureMindResponse)
                 }
-                .mapError({ _ -> RemoteApiError  in })
+                .mapError({ _ -> Never  in })
                 .collect()
                 .eraseToAnyPublisher()
             })
-            .eraseToAnyPublisher()
+            .sink( receiveValue: { [weak self] in self?.list.send($0) })
+            .store(in: &cancellables)
+
     }
 }
 
