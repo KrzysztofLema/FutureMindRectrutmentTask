@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 class ListViewModel {
 
@@ -17,4 +18,7 @@ class ListViewModel {
         self.futureMindRemoteApi = futureMindRemoteApi
     }
 
+    @objc func pullToRefresh() {
+        futureMindRemoteApi.loadList()
+    }
 }

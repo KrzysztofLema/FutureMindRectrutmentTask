@@ -21,13 +21,20 @@ class ListView: UIView {
         )
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
+
+        tableView.refreshControl = UIRefreshControl()
+        
         return tableView
     }()
 
     private func setupView() {
         addSubview(tableView)
+
         tableView.dataSource = viewModel.listViewDataSource.listViewDiffableDataSource
+        viewModel.listViewDataSource.setupDataSource(tableView: tableView)
         tableView.delegate = self
+
+        tableView.refreshControl?.addTarget(viewModel, action: #selector(viewModel.pullToRefresh), for: .valueChanged)
     }
 
     override func layoutSubviews() {
@@ -39,7 +46,7 @@ class ListView: UIView {
         self.viewModel = viewModel
         super.init(frame: frame)
         setupView()
-        viewModel.listViewDataSource.setupDataSource(tableView: tableView)
+
         bind()
     }
 
@@ -48,13 +55,17 @@ class ListView: UIView {
     }
 
     func bind() {
-        viewModel.futureMindRemoteApi.list?
+        viewModel.futureMindRemoteApi.list
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { error in
+                debugInfo("Completion")
         }, receiveValue: { futureMind in
             self.viewModel.listViewDataSource.applyFutureMinds(results: futureMind)
+            self.tableView.refreshControl?.endRefreshing()
         }).store(in: &cancallables)
     }
+
+   
 }
 
 extension ListView: UITableViewDelegate {
