@@ -5,12 +5,12 @@
 //  Created by Krzysztof Lema on 09/04/2022.
 //
 import UIKit
+import Combine
 
 protocol ListViewDataSource {
     var listViewDiffableDataSource: UITableViewDiffableDataSource<ListViewSection, FutureMind>? { get }
-
     func setupDataSource(tableView: UITableView)
-    func applyFutureMinds()
+    func applyFutureMinds(results: [FutureMind])
 }
 
 class ListViewDataSourceImpl: ListViewDataSource {
@@ -32,19 +32,19 @@ class ListViewDataSourceImpl: ListViewDataSource {
         })
     }
 
-    func applyFutureMinds() {
+    func applyFutureMinds(results: [FutureMind]) {
         var snapshot = NSDiffableDataSourceSnapshot<ListViewSection, FutureMind>()
         guard listViewDiffableDataSource != nil else { return }
 
         snapshot.deleteAllItems()
         snapshot.appendSections([.mainSection])
 
-        if FutureMind.fakeData.isEmpty {
+        if results.isEmpty {
             listViewDiffableDataSource?.apply(snapshot, animatingDifferences: true)
             return
         }
 
-        snapshot.appendItems(FutureMind.fakeData, toSection: .mainSection)
+        snapshot.appendItems(results, toSection: .mainSection)
         listViewDiffableDataSource?.apply(snapshot, animatingDifferences: true)
     }
 }

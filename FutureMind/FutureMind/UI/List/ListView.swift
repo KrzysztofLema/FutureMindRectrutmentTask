@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class ListView: UIView {
 
     let viewModel: ListViewModel
+    var cancallables = Set<AnyCancellable>()
 
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -38,11 +40,20 @@ class ListView: UIView {
         super.init(frame: frame)
         setupView()
         viewModel.listViewDataSource.setupDataSource(tableView: tableView)
-        viewModel.listViewDataSource.applyFutureMinds()
+        bind()
     }
 
     required init?(coder: NSCoder) {
         fatalError("View is created without Nib files")
+    }
+
+    func bind() {
+        viewModel.futureMindRemoteApi.list?
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { error in
+        }, receiveValue: { futureMind in
+            self.viewModel.listViewDataSource.applyFutureMinds(results: futureMind)
+        }).store(in: &cancallables)
     }
 }
 

@@ -17,6 +17,10 @@
 		9513440727FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */; };
 		959C826B280225FF001B81FD /* FutureMind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C826A280225FF001B81FD /* FutureMind.swift */; };
 		959C827028022F8D001B81FD /* ListViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C826F28022F8D001B81FD /* ListViewDataSource.swift */; };
+		959C82752802C52B001B81FD /* FutureMindRemoteApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C82742802C52B001B81FD /* FutureMindRemoteApi.swift */; };
+		959C82772802C5EC001B81FD /* FutureMindResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C82762802C5EC001B81FD /* FutureMindResponse.swift */; };
+		959C827D28043B31001B81FD /* DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C827C28043B31001B81FD /* DebugPrint.swift */; };
+		959C828028044742001B81FD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C827F28044742001B81FD /* String+Extensions.swift */; };
 		95BCF4F227FF7EAA00D3B310 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BCF4F127FF7EAA00D3B310 /* AppDependencyContainer.swift */; };
 		95BCF4F527FF7F8900D3B310 /* AppDependencyContainer+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BCF4F427FF7F8900D3B310 /* AppDependencyContainer+List.swift */; };
 		95BCF4FB27FF84D100D3B310 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BCF4FA27FF84D100D3B310 /* ListViewModel.swift */; };
@@ -57,6 +61,10 @@
 		9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		959C826A280225FF001B81FD /* FutureMind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMind.swift; sourceTree = "<group>"; };
 		959C826F28022F8D001B81FD /* ListViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDataSource.swift; sourceTree = "<group>"; };
+		959C82742802C52B001B81FD /* FutureMindRemoteApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindRemoteApi.swift; sourceTree = "<group>"; };
+		959C82762802C5EC001B81FD /* FutureMindResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindResponse.swift; sourceTree = "<group>"; };
+		959C827C28043B31001B81FD /* DebugPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugPrint.swift; sourceTree = "<group>"; };
+		959C827F28044742001B81FD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		95BCF4F127FF7EAA00D3B310 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		95BCF4F427FF7F8900D3B310 /* AppDependencyContainer+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDependencyContainer+List.swift"; sourceTree = "<group>"; };
 		95BCF4FA27FF84D100D3B310 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +121,7 @@
 		951343E227FF60AC00DC6D90 /* FutureMind */ = {
 			isa = PBXGroup;
 			children = (
+				959C827B28043B26001B81FD /* Helpers */,
 				951343E327FF60AC00DC6D90 /* AppDelegate.swift */,
 				951343EC27FF60BB00DC6D90 /* Assets.xcassets */,
 				959C82712802BABB001B81FD /* DataLayer */,
@@ -147,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				959C826A280225FF001B81FD /* FutureMind.swift */,
+				959C82762802C5EC001B81FD /* FutureMindResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,10 +181,44 @@
 		959C82712802BABB001B81FD /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				959C82722802C4EF001B81FD /* Repositories */,
 				959C826C2802260E001B81FD /* Model */,
 				959C826E28022F79001B81FD /* DataSource */,
 			);
 			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		959C82722802C4EF001B81FD /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				959C82732802C506001B81FD /* Remote */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		959C82732802C506001B81FD /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				959C82742802C52B001B81FD /* FutureMindRemoteApi.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		959C827B28043B26001B81FD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				959C827E28044719001B81FD /* Extensions */,
+				959C827C28043B31001B81FD /* DebugPrint.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		959C827E28044719001B81FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				959C827F28044742001B81FD /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		95BCF4F027FF7E0500D3B310 /* DepedencyContainer */ = {
@@ -245,6 +289,8 @@
 			dependencies = (
 			);
 			name = FutureMind;
+			packageProductDependencies = (
+			);
 			productName = FutureMind;
 			productReference = 951343E027FF60AC00DC6D90 /* FutureMind.app */;
 			productType = "com.apple.product-type.application";
@@ -317,6 +363,8 @@
 				Base,
 			);
 			mainGroup = 951343D727FF60AC00DC6D90;
+			packageReferences = (
+			);
 			productRefGroup = 951343E127FF60AC00DC6D90 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -381,11 +429,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				959C82752802C52B001B81FD /* FutureMindRemoteApi.swift in Sources */,
 				951343E827FF60AC00DC6D90 /* ListViewController.swift in Sources */,
 				959C827028022F8D001B81FD /* ListViewDataSource.swift in Sources */,
 				95E957B72801F6D300A12217 /* ListTableViewCell.swift in Sources */,
 				95BCF4FB27FF84D100D3B310 /* ListViewModel.swift in Sources */,
+				959C82772802C5EC001B81FD /* FutureMindResponse.swift in Sources */,
 				951343E427FF60AC00DC6D90 /* AppDelegate.swift in Sources */,
+				959C827D28043B31001B81FD /* DebugPrint.swift in Sources */,
+				959C828028044742001B81FD /* String+Extensions.swift in Sources */,
 				95BCF4F527FF7F8900D3B310 /* AppDependencyContainer+List.swift in Sources */,
 				951343E627FF60AC00DC6D90 /* SceneDelegate.swift in Sources */,
 				959C826B280225FF001B81FD /* FutureMind.swift in Sources */,
