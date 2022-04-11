@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ListTableViewCell: UITableViewCell {
     
@@ -18,6 +19,8 @@ class ListTableViewCell: UITableViewCell {
         descriptionLabel.text = futureMind.description
         titleLabel.text = futureMind.title
         modificationDateLabel.text = futureMind.modificationDate
+        futureMindImageView.kf.indicatorType = .activity
+        futureMindImageView.kf.setImage(with: futureMind.imageUrl, placeholder: UIImage(named: "placeholderImage"), options: nil, completionHandler: nil)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
