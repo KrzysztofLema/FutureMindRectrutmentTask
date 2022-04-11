@@ -21,6 +21,6 @@ extension AppDependencyContainer: ListFactories  {
     }
 
     func makeListViewModel() -> ListViewModel {
-        ListViewModel(listViewDataSource: makeListViewDataSource())
+        ListViewModel(listViewDataSource: makeListViewDataSource(), futureMindRemoteApi: makeFutureMindRemoteApi())
     }
 }
