@@ -13,27 +13,62 @@ protocol FutureMindRemoteApi {
 }
 
 class FutureMindRemoteApiImpl: FutureMindRemoteApi {
+
+    let urlSession: URLSession
     
-    private let endpoint = URL(string: "https://recruitment-task.futuremind.dev/recruitment-task")
+    private let url = URL(string: "https://recruitment-task.futuremind.dev/recruitment-task")
     private let decoder = JSONDecoder()
     
     private let apiQueue = DispatchQueue(label: "API", qos: .default, attributes: .concurrent)
+
+    init(urlSession: URLSession) {
+        self.urlSession = urlSession
+    }
     
     func loadList() -> AnyPublisher<[FutureMindResponse], Error> {
-        URLSession.shared.dataTaskPublisher(for: endpoint!)
-            .share()
+        guard let url = url else {
+            return Fail(error: RemoteApiError.invalidRequestError)
+                .eraseToAnyPublisher()
+        }
+        return urlSession.dataTaskPublisher(for: url)
+            .mapError({ error in
+                RemoteApiError.connectionFailure
+            })
             .receive(on: apiQueue)
-            .map { $0.data }
-            .decode(type: [FutureMindResponse].self, decoder: decoder)
+            .tryMap { data, response -> Data in
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw RemoteApiError.badHTTPResponse
+                }
+                if (200..<300).contains(httpResponse.statusCode) {
+
+                } else {
+                    if httpResponse.statusCode == 401 {
+                        throw RemoteApiError.validationError
+                    } else {
+                        throw RemoteApiError.badHTTPResponse
+                    }
+                }
+                return data
+            }.tryMap({ data -> [FutureMindResponse] in
+                let decoder = JSONDecoder()
+                do {
+                    return try decoder.decode(
+                        [FutureMindResponse].self,
+                        from: data)
+                }
+                catch {
+                    throw RemoteApiError.decoding
+                }
+            })
             .eraseToAnyPublisher()
     }
 }
 
 enum RemoteApiError: Error {
-    case unknown
-    case createURL
+    case invalidRequestError
+    case connectionFailure
     case httpError
     case decoding
-    case mapError
     case badHTTPResponse
+    case validationError
 }
