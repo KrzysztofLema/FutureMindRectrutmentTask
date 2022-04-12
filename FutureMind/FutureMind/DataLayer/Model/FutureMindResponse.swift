@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FutureMindResponse: Decodable, Hashable {
+public struct FutureMindResponse: Decodable, Hashable, Encodable {
     let description: String
     let imageUrl: String
     let modificationDate: String
