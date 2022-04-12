@@ -6,11 +6,10 @@
 //
 
 class AppDependencyContainer {
-    func makeListViewDataSource() -> ListViewDataSource {
-        ListViewDataSourceImpl()
-    }
 
     func makeFutureMindRemoteApi() -> FutureMindRemoteApi {
         FutureMindRemoteApiImpl()
     }
+
+    let dataSource = ListViewDataSourceImpl()
 }

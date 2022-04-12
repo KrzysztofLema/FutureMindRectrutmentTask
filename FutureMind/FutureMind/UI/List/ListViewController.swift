@@ -11,27 +11,32 @@ import SafariServices
 class ListViewController: UIViewController {
 
     let viewModel: ListViewModel
+    let dataSource: ListViewDataSource
 
+    // swiftlint:disable force_cast
     var listView: ListView {
-        return view as? ListView ?? ListView(viewModel: viewModel)
+        return view as! ListView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         listView.tableView.delegate = self
+        listView.tableView.dataSource = dataSource.listViewDiffableDataSource
+        dataSource.setupDataSource(tableView: listView.tableView)
     }
 
     override func loadView() {
-        self.view = ListView(viewModel: viewModel)
+        self.view = ListView(viewModel: viewModel, listViewDataSource: dataSource)
     }
 
     init(
         nibName nibNameOrNil: String? = nil,
         bundle nibBundleOrNil: Bundle? = nil,
-        viewModel: ListViewModel
+        viewModel: ListViewModel,
+        dataSource: ListViewDataSource
     ) {
         self.viewModel = viewModel
-
+        self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -47,11 +52,17 @@ extension ListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let url = viewModel.futureMindRemoteApi.list.value[indexPath.row].futureMindDetailURL else {
+        presentSafariViewController(at: indexPath)
+    }
+}
+
+private extension ListViewController {
+    func presentSafariViewController(at indexPath: IndexPath) {
+        guard let url = viewModel.futureMinds[indexPath.row].futureMindDetailURL else {
             return
         }
         let safariViewController = SFSafariViewController(url:url)
+        safariViewController.modalPresentationStyle = .popover
         navigationController?.present(safariViewController, animated: true)
     }
-
 }

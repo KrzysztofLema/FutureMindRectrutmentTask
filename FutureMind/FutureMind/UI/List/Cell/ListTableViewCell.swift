@@ -20,7 +20,12 @@ class ListTableViewCell: UITableViewCell {
         titleLabel.text = futureMind.title
         modificationDateLabel.text = futureMind.modificationDate
         futureMindImageView.kf.indicatorType = .activity
-        futureMindImageView.kf.setImage(with: futureMind.imageUrl, placeholder: UIImage(named: "placeholderImage"), options: nil, completionHandler: nil)
+        futureMindImageView.kf.setImage(
+            with: futureMind.imageUrl,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: nil,
+            completionHandler: nil
+        )
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
