@@ -9,7 +9,9 @@ import Foundation
 
 extension String {
     func removingUrls() -> String {
-        guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else {
+        guard let detector = try? NSDataDetector(
+            types: NSTextCheckingResult.CheckingType.link.rawValue
+        ) else {
             return self
         }
         return detector.stringByReplacingMatches(in: self,
@@ -19,10 +21,16 @@ extension String {
     }
 
     func detectUrl() -> String {
-        guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else {
+        guard let detector = try? NSDataDetector(
+            types: NSTextCheckingResult.CheckingType.link.rawValue
+        ) else {
             return ""
         }
-        let matches = detector.matches(in: self, options: [], range: NSRange(location: 0, length: self.utf16.count))
+        let matches = detector.matches(
+            in: self,
+            options: [],
+            range: NSRange(location: 0,length: self.utf16.count)
+        )
 
         for match in matches {
             guard let range = Range(match.range, in: self) else { continue }

@@ -17,10 +17,10 @@ protocol ListViewModelFactory {
 
 extension AppDependencyContainer: ListFactories  {
     func makeListViewController() -> ListViewController {
-        ListViewController(viewModel: makeListViewModel())
+        return ListViewController(viewModel: makeListViewModel(),dataSource: dataSource)
     }
 
     func makeListViewModel() -> ListViewModel {
-        ListViewModel(listViewDataSource: makeListViewDataSource(), futureMindRemoteApi: makeFutureMindRemoteApi())
+       return ListViewModel(futureMindRemoteApi: makeFutureMindRemoteApi())
     }
 }

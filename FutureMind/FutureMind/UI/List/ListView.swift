@@ -11,7 +11,9 @@ import Combine
 class ListView: UIView {
 
     let viewModel: ListViewModel
-    var cancallables = Set<AnyCancellable>()
+    let dataSource: ListViewDataSource
+
+    private var subscriptions = Set<AnyCancellable>()
 
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -21,9 +23,7 @@ class ListView: UIView {
         )
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
-
         tableView.refreshControl = UIRefreshControl()
-        
         return tableView
     }()
     
@@ -34,18 +34,9 @@ class ListView: UIView {
         return indicator
     }()
 
-    private func setupView() {
-        addSubview(tableView)
-        addSubview(activityIndicator)
-
-        tableView.dataSource = viewModel.listViewDataSource.listViewDiffableDataSource
-        viewModel.listViewDataSource.setupDataSource(tableView: tableView)
-        
-        tableView.refreshControl?.addTarget(viewModel, action: #selector(viewModel.pullToRefresh), for: .valueChanged)
-    }
-
-    init(frame: CGRect = .zero, viewModel: ListViewModel) {
+    init(frame: CGRect = .zero, viewModel: ListViewModel, listViewDataSource: ListViewDataSource) {
         self.viewModel = viewModel
+        self.dataSource = listViewDataSource
         super.init(frame: frame)
         setupView()
         setupConstrains()
@@ -55,16 +46,18 @@ class ListView: UIView {
     required init?(coder: NSCoder) {
         fatalError("View is created without Nib files")
     }
+}
 
+private extension ListView {
     func bind() {
-        viewModel.futureMindRemoteApi.list
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { error in
-                debugInfo("Completion")
-        }, receiveValue: { [weak self] futureMind in
-            self?.viewModel.listViewDataSource.applyFutureMinds(results: futureMind)
-            self?.tableView.refreshControl?.endRefreshing()
-        }).store(in: &cancallables)
+        viewModel.allFutureMinds.sink { _ in
+        } receiveValue: { [weak self] futureMinds in
+            guard let self = self else { return }
+            self.tableView.refreshControl?.endRefreshing()
+            self.dataSource.applyFutureMinds(results: futureMinds)
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+        }.store(in: &subscriptions)
     }
 
     func setupConstrains() {
@@ -82,5 +75,16 @@ class ListView: UIView {
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+
+    func setupView() {
+        addSubview(tableView)
+        addSubview(activityIndicator)
+
+        tableView.refreshControl?.addTarget(
+            viewModel,
+            action: #selector(viewModel.pullToRefresh),
+            for: .valueChanged
+        )
     }
 }
