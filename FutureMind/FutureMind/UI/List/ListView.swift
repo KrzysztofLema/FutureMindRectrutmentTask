@@ -26,9 +26,17 @@ class ListView: UIView {
         
         return tableView
     }()
+    
+    let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .medium
+        indicator.startAnimating()
+        return indicator
+    }()
 
     private func setupView() {
         addSubview(tableView)
+        addSubview(activityIndicator)
 
         tableView.dataSource = viewModel.listViewDataSource.listViewDiffableDataSource
         viewModel.listViewDataSource.setupDataSource(tableView: tableView)
@@ -53,20 +61,26 @@ class ListView: UIView {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { error in
                 debugInfo("Completion")
-        }, receiveValue: { futureMind in
-            self.viewModel.listViewDataSource.applyFutureMinds(results: futureMind)
-            self.tableView.refreshControl?.endRefreshing()
+        }, receiveValue: { [weak self] futureMind in
+            self?.viewModel.listViewDataSource.applyFutureMinds(results: futureMind)
+            self?.tableView.refreshControl?.endRefreshing()
         }).store(in: &cancallables)
     }
 
     func setupConstrains() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }
