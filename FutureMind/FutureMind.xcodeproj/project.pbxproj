@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9500B57D28071B6E00C2D3BE /* ViewsAccessibilityLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB1628070CB7007C4D04 /* ViewsAccessibilityLabels.swift */; };
 		951343E427FF60AC00DC6D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951343E327FF60AC00DC6D90 /* AppDelegate.swift */; };
 		951343E627FF60AC00DC6D90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951343E527FF60AC00DC6D90 /* SceneDelegate.swift */; };
 		951343E827FF60AC00DC6D90 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951343E727FF60AC00DC6D90 /* ListViewController.swift */; };
 		951343ED27FF60BB00DC6D90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951343EC27FF60BB00DC6D90 /* Assets.xcassets */; };
 		951343F027FF60BB00DC6D90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951343EE27FF60BB00DC6D90 /* LaunchScreen.storyboard */; };
-		9513440527FF60BB00DC6D90 /* FutureMindUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440427FF60BB00DC6D90 /* FutureMindUITests.swift */; };
-		9513440727FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */; };
+		9513440527FF60BB00DC6D90 /* ListViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440427FF60BB00DC6D90 /* ListViewUITests.swift */; };
+		9513440727FF60BB00DC6D90 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440627FF60BB00DC6D90 /* BaseTestCase.swift */; };
 		959C826B280225FF001B81FD /* FutureMind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C826A280225FF001B81FD /* FutureMind.swift */; };
 		959C827028022F8D001B81FD /* ListViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C826F28022F8D001B81FD /* ListViewDataSource.swift */; };
 		959C82752802C52B001B81FD /* FutureMindRemoteApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C82742802C52B001B81FD /* FutureMindRemoteApi.swift */; };
@@ -29,6 +30,7 @@
 		95BEDB0A28061D6D007C4D04 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB0928061D6D007C4D04 /* Mocks.swift */; };
 		95BEDB0F2806372E007C4D04 /* ListViewModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB0E2806372E007C4D04 /* ListViewModelsTests.swift */; };
 		95BEDB112806DF4A007C4D04 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB102806DF4A007C4D04 /* UIViewController + Alert.swift */; };
+		95BEDB1728070CB7007C4D04 /* ViewsAccessibilityLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB1628070CB7007C4D04 /* ViewsAccessibilityLabels.swift */; };
 		95E957B72801F6D300A12217 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E957B62801F6D300A12217 /* ListTableViewCell.swift */; };
 		95E957B92801FDCC00A12217 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E957B82801FDCC00A12217 /* ListTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -60,8 +62,8 @@
 		951343F127FF60BB00DC6D90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951343F627FF60BB00DC6D90 /* FutureMindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutureMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9513440027FF60BB00DC6D90 /* FutureMindUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutureMindUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9513440427FF60BB00DC6D90 /* FutureMindUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindUITests.swift; sourceTree = "<group>"; };
-		9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9513440427FF60BB00DC6D90 /* ListViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewUITests.swift; sourceTree = "<group>"; };
+		9513440627FF60BB00DC6D90 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		959C826A280225FF001B81FD /* FutureMind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMind.swift; sourceTree = "<group>"; };
 		959C826F28022F8D001B81FD /* ListViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDataSource.swift; sourceTree = "<group>"; };
 		959C82742802C52B001B81FD /* FutureMindRemoteApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindRemoteApi.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		95BEDB0928061D6D007C4D04 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		95BEDB0E2806372E007C4D04 /* ListViewModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelsTests.swift; sourceTree = "<group>"; };
 		95BEDB102806DF4A007C4D04 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
+		95BEDB1628070CB7007C4D04 /* ViewsAccessibilityLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsAccessibilityLabels.swift; sourceTree = "<group>"; };
 		95E957B62801F6D300A12217 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		95E957B82801FDCC00A12217 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,8 +159,8 @@
 		9513440327FF60BB00DC6D90 /* FutureMindUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9513440427FF60BB00DC6D90 /* FutureMindUITests.swift */,
-				9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */,
+				9513440427FF60BB00DC6D90 /* ListViewUITests.swift */,
+				9513440627FF60BB00DC6D90 /* BaseTestCase.swift */,
 			);
 			path = FutureMindUITests;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			children = (
 				959C827E28044719001B81FD /* Extensions */,
 				959C827C28043B31001B81FD /* DebugPrint.swift */,
+				95BEDB1628070CB7007C4D04 /* ViewsAccessibilityLabels.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -495,6 +499,7 @@
 				959C827028022F8D001B81FD /* ListViewDataSource.swift in Sources */,
 				95E957B72801F6D300A12217 /* ListTableViewCell.swift in Sources */,
 				95BEDB112806DF4A007C4D04 /* UIViewController + Alert.swift in Sources */,
+				95BEDB1728070CB7007C4D04 /* ViewsAccessibilityLabels.swift in Sources */,
 				95BCF4FB27FF84D100D3B310 /* ListViewModel.swift in Sources */,
 				959C82772802C5EC001B81FD /* FutureMindResponse.swift in Sources */,
 				951343E427FF60AC00DC6D90 /* AppDelegate.swift in Sources */,
@@ -522,8 +527,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9513440527FF60BB00DC6D90 /* FutureMindUITests.swift in Sources */,
-				9513440727FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift in Sources */,
+				9513440527FF60BB00DC6D90 /* ListViewUITests.swift in Sources */,
+				9500B57D28071B6E00C2D3BE /* ViewsAccessibilityLabels.swift in Sources */,
+				9513440727FF60BB00DC6D90 /* BaseTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,7 +688,7 @@
 				INFOPLIST_FILE = FutureMind/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -694,7 +700,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -710,7 +716,7 @@
 				INFOPLIST_FILE = FutureMind/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -722,7 +728,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -24,6 +24,7 @@ class ListView: UIView {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         tableView.refreshControl = UIRefreshControl()
+        tableView.accessibilityLabel = AccessibilityElement.ListView.tableView
         return tableView
     }()
     
@@ -31,6 +32,7 @@ class ListView: UIView {
         let indicator = UIActivityIndicatorView()
         indicator.style = .medium
         indicator.startAnimating()
+        indicator.accessibilityLabel = AccessibilityElement.ListView.activityIndicator
         return indicator
     }()
 
