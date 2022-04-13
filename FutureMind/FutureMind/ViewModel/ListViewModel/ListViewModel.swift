@@ -29,7 +29,8 @@ public class ListViewModel {
     func fetchFutureMinds() {
         futureMindRemoteApi.loadList()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
                 if case .failure(let error) = completion {
                     self.handleFutureMindError(error)
                 }

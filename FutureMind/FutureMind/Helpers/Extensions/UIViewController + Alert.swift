@@ -11,7 +11,6 @@ import Combine
 
 extension UIViewController {
 
-  // MARK: - Methods
     func present(error: RemoteApiError) {
       let errorAlertController = UIAlertController(title: "Error",
                                                    message: error.errorDescription,
