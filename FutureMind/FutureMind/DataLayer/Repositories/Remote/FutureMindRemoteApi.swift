@@ -31,7 +31,7 @@ class FutureMindRemoteApiImpl: FutureMindRemoteApi {
                 .eraseToAnyPublisher()
         }
         return urlSession.dataTaskPublisher(for: url)
-            .mapError({ error in
+            .mapError({ _ in
                 RemoteApiError.connectionFailure
             })
             .receive(on: apiQueue)

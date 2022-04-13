@@ -48,14 +48,6 @@ class ListViewController: UIViewController {
     }
 }
 
-private extension ListViewController {
-    func bind() {
-        viewModel.allFutureMindsError.sink { error in
-            self.present(error: error)
-        }.store(in: &subscriptions)
-    }
-}
-
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
@@ -68,6 +60,13 @@ extension ListViewController: UITableViewDelegate {
 }
 
 private extension ListViewController {
+    func bind() {
+        viewModel.allFutureMindsError.sink { [weak self] error in
+            guard let self = self else { return }
+            self.present(error: error)
+        }.store(in: &subscriptions)
+    }
+
     func presentSafariViewController(at indexPath: IndexPath) {
         guard let url = viewModel.futureMinds[indexPath.row].futureMindDetailURL else {
             return

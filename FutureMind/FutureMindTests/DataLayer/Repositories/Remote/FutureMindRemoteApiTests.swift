@@ -95,7 +95,6 @@ class FutureMindRemoteApiTests: XCTestCase {
     func test_whenTheStatusCodeIs200_afterSendRequest_DecodingErrorAppears() {
         //given
         let expectation = XCTestExpectation()
-        let expectedValue = [FutureMindResponse.mock()]
         MockURLProtocol.testData = try? JSONEncoder().encode(FutureMindResponse.mock())
         MockURLProtocol.statusCode = 200
         //when
