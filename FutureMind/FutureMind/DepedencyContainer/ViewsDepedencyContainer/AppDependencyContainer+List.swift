@@ -18,7 +18,7 @@ protocol ListViewModelFactory {
 extension AppDependencyContainer: ListFactories  {
     func makeListViewController() -> ListViewController {
         let listViewController = ListViewController(viewModel: makeListViewModel(),dataSource: dataSource)
-        listViewController.view.accessibilityLabel = AccessibilityElement.ListView.view
+        listViewController.view.accessibilityLabel = ViewsAccessibilityLabels.ListView.view
         return listViewController
     }
 
