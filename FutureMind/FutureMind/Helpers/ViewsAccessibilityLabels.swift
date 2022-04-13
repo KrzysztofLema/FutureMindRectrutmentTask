@@ -7,9 +7,9 @@
 
 import Foundation
 
- enum AccessibilityElement {}
+ enum ViewsAccessibilityLabels {}
 
-extension AccessibilityElement {
+extension ViewsAccessibilityLabels {
     enum ListView {
         static let view = "view"
         static let tableView = "tableView"

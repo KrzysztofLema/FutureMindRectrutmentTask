@@ -31,13 +31,13 @@ extension ListViewUITests {
     }
 
     var tableView: XCUIElementQuery {
-        view.tables.matching(identifier: AccessibilityElement.ListView.tableView)
+        view.tables.matching(identifier: ViewsAccessibilityLabels.ListView.tableView)
     }
 
     var view: XCUIElement {
-        application.otherElements[AccessibilityElement.ListView.view]
+        application.otherElements[ViewsAccessibilityLabels.ListView.view]
     }
     var activityIndicator: XCUIElementQuery {
-        view.activityIndicators.matching(identifier: AccessibilityElement.ListView.activityIndicator)
+        view.activityIndicators.matching(identifier: ViewsAccessibilityLabels.ListView.activityIndicator)
     }
 }
