@@ -39,9 +39,7 @@ class FutureMindRemoteApiImpl: FutureMindRemoteApi {
                 guard let httpResponse = response as? HTTPURLResponse else {
                     throw RemoteApiError.badHTTPResponse
                 }
-                if (200..<300).contains(httpResponse.statusCode) {
-
-                } else {
+                guard (200..<300).contains(httpResponse.statusCode) else {
                     if httpResponse.statusCode == 401 {
                         throw RemoteApiError.validationError
                     } else {
@@ -50,9 +48,8 @@ class FutureMindRemoteApiImpl: FutureMindRemoteApi {
                 }
                 return data
             }.tryMap({ data -> [FutureMindResponse] in
-                let decoder = JSONDecoder()
                 do {
-                    return try decoder.decode(
+                    return try self.decoder.decode(
                         [FutureMindResponse].self,
                         from: data)
                 }
@@ -71,4 +68,21 @@ enum RemoteApiError: Error {
     case decoding
     case badHTTPResponse
     case validationError
+
+    var errorDescription: String {
+        switch self {
+        case .invalidRequestError:
+           return "Invalid request error"
+        case .connectionFailure:
+            return "Connection Failure"
+        case .httpError:
+            return "There is some http error."
+        case .decoding:
+            return "Server returned data in unexpected format."
+        case .badHTTPResponse:
+            return "There is problem with http response"
+        case .validationError:
+            return "Validation Error"
+        }
+    }
 }

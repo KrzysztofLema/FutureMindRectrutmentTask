@@ -12,7 +12,6 @@
 		951343E827FF60AC00DC6D90 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951343E727FF60AC00DC6D90 /* ListViewController.swift */; };
 		951343ED27FF60BB00DC6D90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951343EC27FF60BB00DC6D90 /* Assets.xcassets */; };
 		951343F027FF60BB00DC6D90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951343EE27FF60BB00DC6D90 /* LaunchScreen.storyboard */; };
-		951343FB27FF60BB00DC6D90 /* FutureMindTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951343FA27FF60BB00DC6D90 /* FutureMindTests.swift */; };
 		9513440527FF60BB00DC6D90 /* FutureMindUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440427FF60BB00DC6D90 /* FutureMindUITests.swift */; };
 		9513440727FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */; };
 		959C826B280225FF001B81FD /* FutureMind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C826A280225FF001B81FD /* FutureMind.swift */; };
@@ -28,6 +27,8 @@
 		95BCF4FD27FF84E200D3B310 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BCF4FC27FF84E200D3B310 /* ListView.swift */; };
 		95BEDB06280613CC007C4D04 /* FutureMindRemoteApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB05280613CC007C4D04 /* FutureMindRemoteApiTests.swift */; };
 		95BEDB0A28061D6D007C4D04 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB0928061D6D007C4D04 /* Mocks.swift */; };
+		95BEDB0F2806372E007C4D04 /* ListViewModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB0E2806372E007C4D04 /* ListViewModelsTests.swift */; };
+		95BEDB112806DF4A007C4D04 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BEDB102806DF4A007C4D04 /* UIViewController + Alert.swift */; };
 		95E957B72801F6D300A12217 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E957B62801F6D300A12217 /* ListTableViewCell.swift */; };
 		95E957B92801FDCC00A12217 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E957B82801FDCC00A12217 /* ListTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -58,7 +59,6 @@
 		951343EF27FF60BB00DC6D90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		951343F127FF60BB00DC6D90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951343F627FF60BB00DC6D90 /* FutureMindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutureMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		951343FA27FF60BB00DC6D90 /* FutureMindTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindTests.swift; sourceTree = "<group>"; };
 		9513440027FF60BB00DC6D90 /* FutureMindUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FutureMindUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9513440427FF60BB00DC6D90 /* FutureMindUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindUITests.swift; sourceTree = "<group>"; };
 		9513440627FF60BB00DC6D90 /* FutureMindUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -74,6 +74,8 @@
 		95BCF4FC27FF84E200D3B310 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		95BEDB05280613CC007C4D04 /* FutureMindRemoteApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureMindRemoteApiTests.swift; sourceTree = "<group>"; };
 		95BEDB0928061D6D007C4D04 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		95BEDB0E2806372E007C4D04 /* ListViewModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelsTests.swift; sourceTree = "<group>"; };
+		95BEDB102806DF4A007C4D04 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 		95E957B62801F6D300A12217 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		95E957B82801FDCC00A12217 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,9 +146,9 @@
 		951343F927FF60BB00DC6D90 /* FutureMindTests */ = {
 			isa = PBXGroup;
 			children = (
+				95BEDB0B280636FF007C4D04 /* ViewModels */,
 				95BEDB0728061D1B007C4D04 /* Mocks */,
 				95BEDB0228061381007C4D04 /* DataLayer */,
-				951343FA27FF60BB00DC6D90 /* FutureMindTests.swift */,
 			);
 			path = FutureMindTests;
 			sourceTree = "<group>";
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				959C827F28044742001B81FD /* String+Extensions.swift */,
+				95BEDB102806DF4A007C4D04 /* UIViewController + Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,6 +321,14 @@
 				95BEDB0928061D6D007C4D04 /* Mocks.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		95BEDB0B280636FF007C4D04 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				95BEDB0E2806372E007C4D04 /* ListViewModelsTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,6 +494,7 @@
 				951343E827FF60AC00DC6D90 /* ListViewController.swift in Sources */,
 				959C827028022F8D001B81FD /* ListViewDataSource.swift in Sources */,
 				95E957B72801F6D300A12217 /* ListTableViewCell.swift in Sources */,
+				95BEDB112806DF4A007C4D04 /* UIViewController + Alert.swift in Sources */,
 				95BCF4FB27FF84D100D3B310 /* ListViewModel.swift in Sources */,
 				959C82772802C5EC001B81FD /* FutureMindResponse.swift in Sources */,
 				951343E427FF60AC00DC6D90 /* AppDelegate.swift in Sources */,
@@ -500,7 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951343FB27FF60BB00DC6D90 /* FutureMindTests.swift in Sources */,
+				95BEDB0F2806372E007C4D04 /* ListViewModelsTests.swift in Sources */,
 				95BEDB0A28061D6D007C4D04 /* Mocks.swift in Sources */,
 				95BEDB06280613CC007C4D04 /* FutureMindRemoteApiTests.swift in Sources */,
 			);

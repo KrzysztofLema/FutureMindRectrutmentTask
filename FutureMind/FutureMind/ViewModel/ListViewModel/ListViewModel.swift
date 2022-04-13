@@ -8,9 +8,10 @@
 import Combine
 import Foundation
 
-class ListViewModel {
+public class ListViewModel {
 
     var allFutureMinds = PassthroughSubject<[FutureMind], Error>()
+    var allFutureMindsError = PassthroughSubject<RemoteApiError, Never>()
     var futureMinds = [FutureMind]()
 
     private var subscriptions = Set<AnyCancellable>()
@@ -30,7 +31,7 @@ class ListViewModel {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
-
+                    self.handleFutureMindError(error)
                 }
             }, receiveValue: { [weak self] futureMindsResponse in
                 guard let self = self else {
@@ -53,5 +54,26 @@ private extension ListViewModel {
             .map { futureMindResponse in
                 FutureMind(futureMindResponse: futureMindResponse)
             }
+    }
+
+    func handleFutureMindError(_ error: Error) {
+        guard let error = error as? RemoteApiError else {
+            return
+        }
+        switch error {
+        case .invalidRequestError:
+            self.allFutureMindsError.send(.invalidRequestError)
+        case .connectionFailure:
+            self.allFutureMindsError.send(.connectionFailure)
+        case .httpError:
+            self.allFutureMindsError.send(.httpError)
+        case .decoding:
+            self.allFutureMindsError.send(.decoding)
+        case .badHTTPResponse:
+            self.allFutureMindsError.send(.badHTTPResponse)
+        case .validationError:
+            self.allFutureMindsError.send(.validationError)
+
+        }
     }
 }
