@@ -39,4 +39,13 @@ extension String {
         }
         return ""
     }
+
+    func formatDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: self)
+        let formattedDate = date?.formatted(date: .complete, time: .omitted)
+        return formattedDate ?? self
+    }
 }

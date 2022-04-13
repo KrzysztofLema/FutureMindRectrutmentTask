@@ -18,7 +18,7 @@ struct FutureMind: Hashable {
     init(futureMindResponse: FutureMindResponse) {
         self.description = futureMindResponse.description.removingUrls()
         self.imageUrl = URL(string: futureMindResponse.imageUrl)
-        self.modificationDate = futureMindResponse.modificationDate
+        self.modificationDate = futureMindResponse.modificationDate.formatDate()
         self.orderId = futureMindResponse.orderId
         self.title = futureMindResponse.title
         self.futureMindDetailURL = URL(string: futureMindResponse.imageUrl.detectUrl())
