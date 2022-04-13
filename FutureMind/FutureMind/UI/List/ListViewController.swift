@@ -7,11 +7,13 @@
 
 import UIKit
 import SafariServices
+import Combine
 
 class ListViewController: UIViewController {
 
     let viewModel: ListViewModel
     let dataSource: ListViewDataSource
+    var subscriptions = Set<AnyCancellable>()
 
     // swiftlint:disable force_cast
     var listView: ListView {
@@ -23,6 +25,7 @@ class ListViewController: UIViewController {
         listView.tableView.delegate = self
         listView.tableView.dataSource = dataSource.listViewDiffableDataSource
         dataSource.setupDataSource(tableView: listView.tableView)
+        bind()
     }
 
     override func loadView() {
@@ -42,6 +45,14 @@ class ListViewController: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension ListViewController {
+    func bind() {
+        viewModel.allFutureMindsError.sink { error in
+            self.present(error: error)
+        }.store(in: &subscriptions)
     }
 }
 
